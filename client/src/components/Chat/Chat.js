@@ -5,6 +5,7 @@ import './chat.css';
 import { useLocation } from 'react-router';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
 
 let socket;
 const Chat = () => {
@@ -50,6 +51,7 @@ const Chat = () => {
     <div className='outerContainer'>
       <div className='container'>
         <InfoBar room={room}></InfoBar>
+        <Messages messages={messages} name={name}></Messages>
         <Input setMessage={setMessage} sendMessage={sendMessage} message={message}></Input>
       </div>
     </div>

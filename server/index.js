@@ -46,6 +46,8 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('One user disconnected');
+       const user= removeUser(socket.id);
+       io.to(user.room).emit('message', {user:'Admin', text:`${user.name} left to room.`})
     })
 });
 app.use(cors());
