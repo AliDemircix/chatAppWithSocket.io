@@ -10,16 +10,21 @@ const router = require('./router');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, { cors: { origin: "*" } }); // to avoid cors error use {cors: {origin: "*"}}
 
-io.on('connection', (socket)=> {
+io.on('connection', (socket) => {
     console.log('New User connected')
 
     socket.on('disconnect', () => {
         console.log('One user disconnected');
     })
-});
 
+    // it is coming frontend with 'join'
+    socket.on('join', ({ name, room },callback) => {
+        console.log(name, room);
+    });
+});
+app.use(cors());
 app.use(router);
 
-server.listen(PORT, ()=> console.log(`Server has started port : ${PORT}`));
+server.listen(PORT, () => console.log(`Server has started port : ${PORT}`));
