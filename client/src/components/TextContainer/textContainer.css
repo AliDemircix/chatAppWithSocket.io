@@ -1,0 +1,37 @@
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    color: white;
+    height: 60%;
+    justify-content: space-between;
+  }
+  .roomTitle{
+    height: 10%;
+  }
+  /* .activeContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50%;
+  } */
+  
+  .activeItem {
+    display: flex;
+    align-items: center;
+  }
+  .onlineUsersContainer{
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    color:black;
+    height: 90%;
+   }
+   .onlineUsersContainer img {
+    margin-right: 5px;
+   }
+
+  
+  @media (min-width: 320px) and (max-width: 1200px) {
+    .textContainer {
+      display: none;
+    }
+  }

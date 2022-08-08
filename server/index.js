@@ -30,6 +30,7 @@ io.on('connection', (socket) => {
 
         //socket.join is a method that allow user to join specific room
         socket.join(user.room);
+        io.to(user.room).emit('roomData',{room:user.room, users:getUsersInRoom(user.room)});
 
         //for now there is no error from frontend
         callback();
@@ -40,7 +41,7 @@ io.on('connection', (socket) => {
         const user= getUser(socket.id);
         // send user message to room in backend to frontend
         io.to(user.room).emit('message',{user:user.name,text:message});
-
+        io.to(user.room).emit('roomData',{room:user.room, users:getUsersInRoom(user.room)})
         callback();
     })
 
@@ -48,6 +49,7 @@ io.on('connection', (socket) => {
         console.log('One user disconnected');
        const user= removeUser(socket.id);
        io.to(user.room).emit('message', {user:'Admin', text:`${user.name} left to room.`})
+       io.to(user.room).emit('roomData',{room:user.room, users:getUsersInRoom(user.room)})
     })
 });
 app.use(cors());
