@@ -1,3 +1,3 @@
 # chatAppWithSocket.io
 
-![Project png](./public/demo.png)
+![Project png](./client/public/demo.png)
